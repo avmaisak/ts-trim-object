@@ -1,0 +1,41 @@
+{
+  "name": "ts-trim-object",
+  "version": "0.1.1",
+  "description": "Ultra small library which removes empty fields from the object",
+  "main": "index.js",
+  "scripts": {
+    "lint": ".\\node_modules\\.bin\\eslint .\\lib\\**",
+    "lint-fix": ".\\node_modules\\.bin\\eslint .\\lib\\** --fix",
+    "test": "cross-env TS_NODE_FILES=true npm run lint && mocha -r ts-node/register -colors tests/*.spec.ts",
+    "build": ".\\node_modules\\.bin\\tsc lib/trim-object -t es3 -m commonjs -d --outDir dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avmaisak/ts-trim-object.git"
+  },
+  "keywords": [
+    "ts",
+    "typescript",
+    "remove-empty-fields"
+  ],
+  "author": "Anton Maisak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/avmaisak/ts-trim-object/issues"
+  },
+  "homepage": "https://github.com/avmaisak/ts-trim-object#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/mocha": "^8.0.2",
+    "@types/node": "^14.0.27",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "chai": "^4.2.0",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.8.1",
+    "mocha": "^8.1.1",
+    "nyc": "^15.1.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^4.0.2"
+  }
+}
