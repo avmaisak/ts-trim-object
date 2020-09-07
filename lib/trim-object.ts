@@ -9,6 +9,15 @@ import { ObjectType } from "./objtype.enum";
  */
 export class TrimObject {
 
+  static hasOnlySpaces(str: string): boolean {
+    if (!str) return false;
+    if (str.length === 0) return false;
+
+    for (let index = 0; index < str.length; index++) if (str[index] !== ' ') return false;
+
+    return true;
+  }
+
   /**
    * Remove empty properties form object.
    * @param obj 
@@ -25,7 +34,11 @@ export class TrimObject {
       else {
         switch (value.constructor.name) {
           case ObjectType.Object: obj[key] = this.trimProps(value as any); break;
-          case ObjectType.String: obj[key] = value.trim(); break;
+          case ObjectType.String: {
+            if (this.hasOnlySpaces(value)) delete obj[key];
+            if (obj[key])
+              obj[key] = value.trim(); break;
+          }
           case ObjectType.Array:
             const arr = value as Array<any>;
             if (!arr || arr.length === 0) delete obj[key];

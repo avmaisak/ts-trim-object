@@ -5,13 +5,55 @@ import { TrimObject } from '../lib/trim-object';
 
 describe('Main test', () => {
 
+  it('Helper - only spaces. Test 1 ', () => {
+    const str = '                                   ';
+    const actual = TrimObject.hasOnlySpaces(str);
+    expect(true).equal(actual);
+  });
+
+  it('Helper - only spaces. Test 2 ', () => {
+    const str = '               as      adasd             as  ';
+    const actual = TrimObject.hasOnlySpaces(str);
+    expect(false).equal(actual);
+  });
+
+  it('Helper - only spaces. Test 3 ', () => {
+    const str = 'test';
+    const actual = TrimObject.hasOnlySpaces(str);
+    expect(false).equal(actual);
+  });
+
+  it('Helper - only spaces. Test 4 ', () => {
+    const str = ' test';
+    const actual = TrimObject.hasOnlySpaces(str);
+    expect(false).equal(actual);
+  });
+
+  it('Helper - only spaces. Test 5 ', () => {
+    const str = ' test     ';
+    const actual = TrimObject.hasOnlySpaces(str);
+    expect(false).equal(actual);
+  });
+
+  it('Helper - only spaces. Test 6 ', () => {
+    const str = ' ';
+    const actual = TrimObject.hasOnlySpaces(str);
+    expect(true).equal(actual);
+  });
+
+
   it('Simple object check ', () => {
     const obj = { item: 'TestName' };
     const actual = TrimObject.trimProps(obj);
     expect(obj === actual).equal(true);
   });
 
-
+  it('Simple object check (trim)', () => {
+    const obj = { item: '        ', field: 'field' };
+    const actual = TrimObject.trimProps(obj);
+    const expected = { field: 'field' };
+    assert.equal(JSON.stringify(actual), JSON.stringify(expected));
+  });
 
   it('Simple object check with trim left - right', () => {
     const obj = { item: '             TestName               ' };
@@ -33,7 +75,6 @@ describe('Main test', () => {
     const expected = { item: 'TestName', products: [{ name: 'Product1', price: 3, items: [{ name: 'Product1', price: 3 }] }] };
     assert.equal(JSON.stringify(actual), JSON.stringify(expected));
   });
-
 
   it('Object check (with nested array)', () => {
     const obj = { test: null, item: 'TestName    ', item2: '', products: [{ name: 'Product1                  ', price: 3, location: '', items: [{ name: 'Product1', price: null, location: '' }] }] } as any;
