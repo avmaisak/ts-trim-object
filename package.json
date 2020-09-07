@@ -1,13 +1,13 @@
 {
   "name": "ts-trim-object",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Ultra small library which removes empty fields from the object",
   "main": "index.js",
   "scripts": {
     "lint": ".\\node_modules\\.bin\\eslint .\\lib\\**",
     "lint-fix": ".\\node_modules\\.bin\\eslint .\\lib\\** --fix",
     "test": "cross-env TS_NODE_FILES=true npm run lint && mocha -r ts-node/register -colors tests/*.spec.ts",
-    "build": ".\\node_modules\\.bin\\tsc lib/trim-object -t es3 -m commonjs -d --outDir dist"
+    "build": ".\\node_modules\\.bin\\tsc lib/index -t es3 -m commonjs -d --outDir dist"
   },
   "repository": {
     "type": "git",

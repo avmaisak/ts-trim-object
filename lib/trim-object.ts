@@ -24,7 +24,7 @@ export class TrimObject {
       }
       else {
         switch (value.constructor.name) {
-
+          case ObjectType.Object: obj[key] = this.trimProps(value as any); break;
           case ObjectType.String: obj[key] = value.trim(); break;
           case ObjectType.Array:
             const arr = value as Array<any>;

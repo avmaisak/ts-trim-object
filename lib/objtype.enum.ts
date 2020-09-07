@@ -1,4 +1,5 @@
 export enum ObjectType {
   String = 'String',
-  Array = 'Array'
+  Array = 'Array',
+  Object = 'Object',
 }
