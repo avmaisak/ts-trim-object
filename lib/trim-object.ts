@@ -19,7 +19,7 @@ export class TrimObject {
 
       const value = obj[key];
 
-      if (!value || value === '') {
+      if (value === null || value === '') {
         delete obj[key];
       }
       else {

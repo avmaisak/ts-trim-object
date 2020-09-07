@@ -86,4 +86,12 @@ describe('Main test', () => {
     assert.equal(JSON.stringify(actual), expected);
   });
 
+
+  it('Object check boolean', () => {
+    const obj = { name: null, deleted: false } as any;
+    const actual = TrimObject.trimProps(obj, true);
+    const expected = { deleted: false };
+    assert.equal(JSON.stringify(actual), JSON.stringify(expected));
+  });
+
 });
