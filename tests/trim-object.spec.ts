@@ -71,4 +71,19 @@ describe('Main test', () => {
     assert.equal(JSON.stringify(actual), JSON.stringify(expected));
   });
 
+
+  it('Object check nullable nested object', () => {
+    const obj = { name: 'nested Object', object: { name: '' } } as any;
+    const actual = TrimObject.trimProps(obj, true);
+    const expected = JSON.stringify({ name: 'nested Object', object: {} } as any);
+    assert.equal(JSON.stringify(actual), expected);
+  });
+
+  it('Object check nullable nested object with array', () => {
+    const obj = { name: 'nested Object', object: { name: '', arr: [{ name1: 'name name' }] } } as any;
+    const actual = TrimObject.trimProps(obj, true);
+    const expected = JSON.stringify({ name: 'nested Object', object: { arr: [{ name1: 'name name' }] } } as any);
+    assert.equal(JSON.stringify(actual), expected);
+  });
+
 });
