@@ -28,6 +28,7 @@ export class TrimObject {
 
       if (value === null || value === '') {
         delete obj[key];
+        if (!Object.keys(obj) || Object.keys(obj).length === 0) return null;
         return obj;
       }
 
@@ -45,12 +46,13 @@ export class TrimObject {
         default: break;
       }
     });
-
+    if (!Object.keys(obj) || Object.keys(obj).length === 0) return null;
     return obj;
   }
 }
 
 /** Declaring Global Extension method. */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare global {
   interface Object {
     /** Remove empty properties form object. */

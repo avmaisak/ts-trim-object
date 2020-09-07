@@ -1,6 +1,6 @@
 {
   "name": "ts-trim-object",
-  "version": "0.1.5",
+  "version": "1.0.0",
   "description": "Ultra small library which removes empty fields from the object",
   "main": "index.js",
   "scripts": {

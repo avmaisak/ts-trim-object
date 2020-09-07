@@ -70,7 +70,22 @@ describe('Main test', () => {
   it('Object check nullable', () => {
     const obj = { name: null };
     const actual = obj.trimProps();
-    const expected = {};
+    const expected = null;
     assert.equal(JSON.stringify(actual), JSON.stringify(expected));
   });
+
+  it('Object check nullable array', () => {
+    const obj = { name: null, array: [] };
+    const actual = obj.trimProps();
+    const expected = null;
+    assert.equal(JSON.stringify(actual), JSON.stringify(expected));
+  });
+
+  it('Object check nullable array object', () => {
+    const obj = { name: null, array: [{ name: '', test: 'test' }] };
+    const actual = obj.trimProps();
+    const expected = { array: [{ test: 'test' }] };
+    assert.equal(JSON.stringify(actual), JSON.stringify(expected));
+  });
+
 });
