@@ -1,6 +1,6 @@
 {
   "name": "ts-trim-object",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Ultra small library which removes empty fields from the object",
   "main": "index.js",
   "scripts": {
@@ -28,8 +28,8 @@
     "@types/chai": "^4.2.12",
     "@types/mocha": "^8.0.3",
     "@types/node": "^14.6.4",
-    "@typescript-eslint/eslint-plugin": "^4.0.1",
-    "@typescript-eslint/parser": "^4.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
     "chai": "^4.2.0",
     "cross-env": "^7.0.2",
     "eslint": "^7.8.1",
