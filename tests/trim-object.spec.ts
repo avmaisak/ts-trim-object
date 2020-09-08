@@ -70,14 +70,14 @@ describe('Main test', () => {
   it('Object check nullable', () => {
     const obj = { name: null };
     const actual = obj.trimProps();
-    const expected = null;
+    const expected = {};
     assert.equal(JSON.stringify(actual), JSON.stringify(expected));
   });
 
   it('Object check nullable array', () => {
     const obj = { name: null, array: [] };
     const actual = obj.trimProps();
-    const expected = null;
+    const expected = {};
     assert.equal(JSON.stringify(actual), JSON.stringify(expected));
   });
 

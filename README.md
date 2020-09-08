@@ -30,7 +30,7 @@ const result3 = myObject3.trimProps();
 ```{ property: 'MyProperty' }```
 
 ### result2 will be 
-``` null ```
+``` { } ```
 
 ### result3 will be 
 ``` { property: 'MyProperty',  array: [{ prop: 'PropText' }] } ```
