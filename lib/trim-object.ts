@@ -28,7 +28,7 @@ export class TrimObject {
 
       if (value === null || value === '') {
         delete obj[key];
-        if (!Object.keys(obj) || Object.keys(obj).length === 0) return {};
+        if (!Object.keys(obj) || Object.keys(obj).length === 0) return null;
         return obj;
       }
 
@@ -46,7 +46,7 @@ export class TrimObject {
         default: break;
       }
     });
-    if (!Object.keys(obj) || Object.keys(obj).length === 0) return {};
+    if (!Object.keys(obj) || Object.keys(obj).length === 0) return null;
     return obj;
   }
 }
