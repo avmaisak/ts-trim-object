@@ -1,7 +1,4 @@
 import { DateUtils } from "./date-utils";
-/* eslint-disable no-case-declarations */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ObjectType } from "./objtype.enum";
 
 /**
@@ -69,18 +66,4 @@ export class TrimObject {
 
 		return obj;
 	}
-}
-
-/** Declaring Global Extension method. */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-declare global {
-	interface Object {
-		/** Remove empty properties form object. */
-		trimProps: () => any;
-	}
-}
-
-/** Remove empty properties form object. */
-Object.prototype.trimProps = function (): any {
-	return TrimObject.trimProps(this);
 }

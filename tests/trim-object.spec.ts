@@ -3,59 +3,60 @@ import { assert, expect } from 'chai';
 import 'mocha';
 import { DateUtils } from '../lib/date-utils';
 import '../lib/trim-object';
+import { TrimObject } from '../lib/trim-object';
 
 describe('Main test', () => {
 
 	it('Simple object check ', () => {
 		const obj = { item: 'TestName' };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		expect(obj === actual).equal(true);
 	});
 
 	it('Simple object check ', () => {
 		const obj = { item: 'TestName' };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		expect(obj === actual).equal(true);
 	});
 
 	it('Simple object check (trim)', () => {
 		const obj = { item: '        ', field: 'field' };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = { field: 'field' };
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
 
 	it('Simple object check with trim left - right', () => {
 		const obj = { item: '             TestName               ' };
-		const actual = JSON.stringify(obj.trimProps());
+		const actual = JSON.stringify(TrimObject.trimProps(obj));
 		const expected = JSON.stringify({ item: 'TestName' });
 		expect(expected === actual).equal(true);
 	});
 
 	it('Object check (with array)', () => {
 		const obj = { item: 'TestName    ', item2: '', products: [{ name: 'Product1', price: 3, location: '' }] };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = { item: 'TestName', products: [{ name: 'Product1', price: 3 }] };
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
 
 	it('Object check (with nested array)', () => {
 		const obj = { item: 'TestName    ', item2: '', products: [{ name: 'Product1                  ', price: 3, location: '', items: [{ name: 'Product1', price: 3, location: '' }] }] };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = { item: 'TestName', products: [{ name: 'Product1', price: 3, items: [{ name: 'Product1', price: 3 }] }] };
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
 
 	it('Object check (with nested array)', () => {
 		const obj = { test: null, item: 'TestName    ', item2: '', products: [{ name: 'Product1                  ', price: 3, location: '', items: [{ name: 'Product1', price: null, location: '' }] }] };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = { item: 'TestName', products: [{ name: 'Product1', price: 3, items: [{ name: 'Product1' }] }] };
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
 
 	it('Object check (with nested array)', () => {
 		const obj = { test: Object, item: 'TestName    ', item2: '', products: [{ name: 'Product1                  ', price: 3, location: '', items: [{ name: 'Product1', price: null, location: '' }] }] };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = { item: 'TestName', products: [{ name: 'Product1', price: 3, items: [{ name: 'Product1' }] }] };
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
@@ -63,28 +64,28 @@ describe('Main test', () => {
 	it('Object check (with nested nullable array and Date type)', () => {
 		const d = new Date();
 		const obj = { test: Object, date: d, items: [] };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = { date: DateUtils.convertDateToUTC(d) };
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
 
 	it('Object check nullable', () => {
 		const obj = { name: null };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = null;
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
 
 	it('Object check nullable array', () => {
 		const obj = { name: null, array: [] };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = null;
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
 
 	it('Object check nullable array object', () => {
 		const obj = { name: null, array: [{ name: '', test: 'test' }] };
-		const actual = obj.trimProps();
+		const actual = TrimObject.trimProps(obj);
 		const expected = { array: [{ test: 'test' }] };
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
@@ -159,7 +160,7 @@ describe('Main test', () => {
 			usersCount: 3
 		};
 
-		const actual = actualObject.trimProps();
+		const actual = TrimObject.trimProps(actualObject);
 		const expected = expectedObject;
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
@@ -203,7 +204,7 @@ describe('Main test', () => {
 			}
 		};
 
-		const actual = actualObject.trimProps();
+		const actual = TrimObject.trimProps(actualObject);
 		const expected = expectedObject;
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
