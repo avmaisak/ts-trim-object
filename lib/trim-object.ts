@@ -39,8 +39,19 @@ export class TrimObject {
 				}
 
 				case ObjectType.Array:
+					
 					const arr = value as Array<any>;
-					if (!arr || arr.length === 0) delete obj[key];
+
+					console.dir(arr);
+					console.dir(arr.length);
+
+					if (!arr || arr.length === 0) {
+						delete obj[key];
+						break;
+					}
+
+					if (arr.length === 1 && arr[0] === null ) { delete obj[key];
+						break;}
 
 					for (let index = 0; index < arr.length; index++) {
 						if (arr[index].constructor.name) {

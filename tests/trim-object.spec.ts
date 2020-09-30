@@ -209,4 +209,49 @@ describe('Main test', () => {
 		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
 	});
 
+
+	it('Object check nullable array object', () => {
+		const actualObject = {
+			needDriver: true,
+			needTransport: false,
+			transportFacility: {
+				certificateNumber: '',
+				regNumber: '',
+				arr: [null]
+			},
+			relay: {},
+			driver: {
+				firstName: 'Василий',
+				lastName: 'Рулев',
+				middleName: 'Игориевич',
+				phoneNumber: '+79111234567',
+				licenseSeries: '222',
+				licenseNumber: '222',
+				licenseDate: '2020-09-12T00:00:00',
+				licenseDateEnd: '2020-09-11T00:00:00'
+			}
+		};
+
+		const expectedObject = {
+			needDriver: true,
+			needTransport: false,
+			transportFacility: null,
+			relay: null,
+			driver: {
+				firstName: 'Василий',
+				lastName: 'Рулев',
+				middleName: 'Игориевич',
+				phoneNumber: '+79111234567',
+				licenseSeries: '222',
+				licenseNumber: '222',
+				licenseDate: '2020-09-12T00:00:00',
+				licenseDateEnd: '2020-09-11T00:00:00'
+			}
+		};
+
+		const actual = TrimObject.trimProps(actualObject);
+		const expected = expectedObject;
+		assert.equal(JSON.stringify(actual), JSON.stringify(expected));
+	});
+
 });
